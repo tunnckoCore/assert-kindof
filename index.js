@@ -9,6 +9,7 @@
 
 var path = require('path');
 var kindof = require('kind-of');
+var isKindof = require('is-kindof');
 var format = require('util').format
 
 var assertKindof = module.exports = {};
@@ -88,7 +89,7 @@ function KindError(e) {
   var err = new TypeError();
   var stack = err.stack;
   var fmt = '%s:%s, expect `value` %s %s, but %s given';
-  this._stack = err.stack;;
+  this._stack = err.stack;
 
   stack = stack.slice(err.stack.indexOf(e.filepath));
   stack = stack.slice(0, stack.indexOf('\n') - 1);
@@ -105,7 +106,7 @@ function KindError(e) {
   this.filename = e.filename;
 
   if (kindof(e.message) === 'function') {
-    e.message = e.message(this)
+    e.message = e.message(this);
   }
   this.message = e.message || format(msg, e.filename, this.line, tobe, e.expected, e.actual);
 
@@ -115,6 +116,6 @@ function KindError(e) {
 assertKindof.a = assertKindof.an = assertKindof;
 assertKindof.not.a = assertKindof.not.an = assertKindof.not;
 assertKindof.a.not = assertKindof.an.not = assertKindof.not;
-
+assertKindof.kindof = isKindof;
 
 
