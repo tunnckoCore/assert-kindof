@@ -13,7 +13,15 @@ npm test
 > For more use-cases see the [tests](./test.js)
 
 ```js
-var assertKindof = require('assert-kindof');
+var is = require('assert-kindof');
+
+is.object('1234');            //=> throw TypeError
+is.a.object('1234');          //=> throw TypeError
+is.an.object('1234');         //=> throw TypeError
+is.not.a.object({a: 'b'});    //=> throw TypeError
+is.not.an.object({a: 'b'});   //=> throw TypeError
+is.a.not.object({a: 'b'});    //=> throw TypeError
+is.an.not.object({a: 'b'});   //=> throw TypeError
 ```
 
 
