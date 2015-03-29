@@ -1,6 +1,6 @@
 {
   "name": "assert-kindof",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Checks the type of a value and throws if not okey. More clear and simple syntax and consistent error messages.",
   "scripts": {
     "lint": "jshint index.js && jscs index.js --reporter inline",
