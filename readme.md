@@ -3,7 +3,7 @@
 > Check native type of the given value and throw TypeError if not okey. Expressive, elegant, behavior-driven API, good descriptive default error messages, simple and clean syntax.
 
 ## Differences
-- `is-kindof` returns `true` or `false`
+- [tunnckoCore/is-kindof](https://github.com/tunnckoCore/is-kindof) returns `true` or `false`
 - `assert-kindof` returns `true` or throws `TypeError`
 
 
@@ -67,7 +67,7 @@ is.kindof.null(null);                 //=> true
 is.kindof.symbol('foo');              //=> false
 is.kindof.symbol(Symbol('foo'));      //=> true
 ```
-**notice:** that `tunnckoCore/is-kindof` is exposed as `is.kindof`
+**notice:** that [tunnckoCore/is-kindof](https://github.com/tunnckoCore/is-kindof) is exposed as `is.kindof`
 
 
 ## Author
