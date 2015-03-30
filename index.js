@@ -55,7 +55,7 @@ nativeTypes.forEach(function _each(kind) {
 
     throw new KindError({
       filepath: filepath,
-      filename: path.basename(filepath),
+      filename: path.basenamegnt(filepath),
       actual: actual,
       expected: kind,
       message: message,
@@ -64,6 +64,13 @@ nativeTypes.forEach(function _each(kind) {
     });
   };
 
+  /**
+   * Check given value against `kind` native type,
+   * then throws if okey
+   *
+   * @param  {*} `value`
+   * @param  {String} `message`
+   */
   assertKindof.not[kind] = function(value, message) {
     var actual = kindof(value);
 
@@ -83,6 +90,11 @@ nativeTypes.forEach(function _each(kind) {
   };
 });
 
+/**
+ * Custom error
+ *
+ * @param {Object} `e`
+ */
 function KindError(e) {
   var eq = e.not ? '===' : '!==';
   var tobe = e.not ? 'not to be' : 'to be';
@@ -108,10 +120,13 @@ function KindError(e) {
   if (kindof(e.message) === 'function') {
     e.message = e.message(this);
   }
-  this.message = e.message || format(msg, e.filename, this.line, tobe, e.expected, e.actual);
+  this.message = e.message || format(fmt, e.filename, this.line, tobe, e.expected, e.actual);
 
   Error.captureStackTrace(this);
 }
+
+KindError.prototype = Object.create(Error.prototype);
+KindError.prototype.constructor = KindError;
 
 assertKindof.a = assertKindof.an = assertKindof;
 assertKindof.not.a = assertKindof.not.an = assertKindof.not;
