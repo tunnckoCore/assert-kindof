@@ -35,8 +35,8 @@
     "url": "https://github.com/tunnckoCore/assert-kindof/blob/master/license.md"
   },
   "dependencies": {
-    "is-kindof": "^1.0.0",
-    "kind-of": "^1.1.0"
+    "is-kindof": "~1.0.0",
+    "kind-of": "~1.1.0"
   },
   "devDependencies": {
     "istanbul-harmony": "~0.3.1",
