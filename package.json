@@ -17,7 +17,19 @@
     "type": "git",
     "url": "git://github.com/tunnckoCore/assert-kindof.git"
   },
-  "keywords": [],
+  "keywords": [
+    "assert",
+    "assertions",
+    "check",
+    "error",
+    "kindof",
+    "native",
+    "simple",
+    "sugar",
+    "throw",
+    "type",
+    "typeof"
+  ],
   "license": {
     "type": "MIT",
     "url": "https://github.com/tunnckoCore/assert-kindof/blob/master/license.md"
