@@ -50,4 +50,23 @@ describe('assert-kindof:', function() {
     }, /custom:string:object/);
     done();
   });
+
+  it('should have `is-kindof` exposed as `is.kindof`', function(done) {
+    assert.strictEqual(is.kindof.object({}), true);
+    assert.strictEqual(is.kindof.object('foo'), false);
+    done();
+  });
+
+  it('should error object have some useful properties', function(done) {
+    try {
+      is.number('foo');
+    } catch(e) {
+      assert.strictEqual(e.actual, 'string');
+      assert.strictEqual(e.expected, 'number');
+      assert.strictEqual(is.kindof.number(e.line), true);
+      assert.strictEqual(e.name, 'TypeError');
+      assert.strictEqual(e.filename, 'test.js');
+      done();
+    }
+  });
 });

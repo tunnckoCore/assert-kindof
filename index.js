@@ -55,7 +55,7 @@ nativeTypes.forEach(function _each(kind) {
 
     throw new KindError({
       filepath: filepath,
-      filename: path.basenamegnt(filepath),
+      filename: path.basename(filepath),
       actual: actual,
       expected: kind,
       message: message,
