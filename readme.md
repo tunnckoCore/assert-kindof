@@ -1,6 +1,6 @@
 ## [![npm][npmjs-img]][npmjs-url] [![mit license][license-img]][license-url] [![build status][travis-img]][travis-url] [![coverage status][coveralls-img]][coveralls-url] [![deps status][daviddm-img]][daviddm-url]
 
-> Check native type of the given value and throw TypeError if not okey. Expressive, elegant, behavior-driven API, good descriptive default error messages, clear and simple syntax.
+> Check native type of the given value and throw TypeError if not okey. Expressive, elegant, behavior-driven API, good descriptive default error messages, simple and clean syntax.
 
 ## Differences
 - `is-kindof` returns `true` or `false`
@@ -15,7 +15,7 @@ npm test
 
 
 ## Features
-- clear and simple syntax
+- clean and simple syntax
 - expressive, behavior-driven api
 - support custom error messages
 - support error message formatter function
