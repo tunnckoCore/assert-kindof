@@ -57,10 +57,11 @@ describe('assert-kindof:', function() {
     done();
   });
 
-  it('should error object have some useful properties', function(done) {
+  it('should thrown TypeError have some useful properties', function(done) {
     try {
       is.number('foo');
     } catch(e) {
+      assert.strictEqual(e instanceof TypeError, true);
       assert.strictEqual(e.actual, 'string');
       assert.strictEqual(e.expected, 'number');
       assert.strictEqual(is.kindof.number(e.line), true);
@@ -68,5 +69,12 @@ describe('assert-kindof:', function() {
       assert.strictEqual(e.filename, 'test.js');
       done();
     }
+  });
+
+  it('should thrown error be instanceof TypeError', function(done) {
+    assert.throws(function _fixture() {
+      is.number('foo');
+    }, TypeError);
+    done();
   });
 });
