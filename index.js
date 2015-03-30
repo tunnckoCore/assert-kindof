@@ -125,7 +125,7 @@ function KindError(e) {
   Error.captureStackTrace(this);
 }
 
-KindError.prototype = Object.create(Error.prototype);
+KindError.prototype = Object.create(TypeError.prototype);
 KindError.prototype.constructor = KindError;
 
 assertKindof.a = assertKindof.an = assertKindof;
