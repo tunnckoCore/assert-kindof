@@ -105,9 +105,10 @@ function KindError(e) {
 
   stack = stack.slice(err.stack.indexOf(e.filepath));
   stack = stack.slice(0, stack.indexOf('\n') - 1);
+  var matches = stack.match(/(\d+):\d+$/);
 
   this.name = 'TypeError';
-  this.line = Number(stack.match(/(\d+):\d+$/)[1]);
+  this.line = Number(matches && matches[1]);
   this.value = e.value;
   this.actual = e.actual;
   this.expected = e.expected;
