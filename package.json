@@ -1,6 +1,6 @@
 {
   "name": "assert-kindof",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Check native type of the given value and throw TypeError if not okey. Expressive, elegant, behavior-driven API, good descriptive default error messages, simple and clean syntax.",
   "scripts": {
     "lint": "jshint index.js && jscs index.js --reporter inline",

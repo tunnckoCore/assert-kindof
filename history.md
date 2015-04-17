@@ -1,5 +1,10 @@
 
 
+## v1.0.1 / April 18, 2015
+- Release v1.0.1 / npm@v1.0.1
+- ensure filepath exists in stack, [partial fix of #3 problem](https://github.com/tunnckoCore/assert-kindof/issues/3)
+- remove coveralls.yml
+
 ## v1.0.0 / March 30, 2015
 - Release v1.0.0 / npm@v1.0.0
 - is-kindof reference
