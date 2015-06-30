@@ -21,6 +21,7 @@ nbproject
 cache
 temp
 tmp
+assert-kindof
 
 # Packages #
 # ##########

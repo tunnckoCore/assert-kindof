@@ -1,137 +1,95 @@
-/**
+/*!
  * assert-kindof <https://github.com/tunnckoCore/assert-kindof>
  *
- * Copyright (c) 2015 Charlike Mike Reagent, contributors.
+ * Copyright (c) 2015 Charlike Mike Reagent <@tunnckoCore> (http://www.tunnckocore.tk)
  * Released under the MIT license.
  */
 
-'use strict';
+'use strict'
 
-var path = require('path');
-var kindof = require('kind-of');
-var isKindof = require('is-kindof');
-var format = require('util').format
+var KindError = require('kind-error')
+var kindof = require('kind-of')
+var is = require('is-kindof')
 
-var assertKindof = module.exports = {};
-assertKindof.not = {};
+var has = Object.hasOwnProperty
+var proto = Object.getPrototypeOf
+var methods = Object.keys(is)
+var filename = lastParentFilename(module.parent)
 
-var nativeTypes = [
-  'undefined',
-  'null',
-  'boolean',
-  'buffer',
-  'number',
-  'string',
-  // 'arguments',
-  'object',
-  'date',
-  'array',
-  'regexp',
-  'function',
-  'map',
-  'weakmap',
-  'set',
-  'weakset',
-  'symbol',
-  'error'
-];
+module.exports = AssertKindof
 
-nativeTypes.forEach(function _each(kind) {
-  /**
-   * Check given value against `kind` native type,
-   * then throws if not okey
-   *
-   * @param  {*} `value`
-   * @param  {String} `message`
-   */
-  var filepath = module.parent.filename;
-
-  assertKindof[kind] = function(value, message) {
-    var actual = kindof(value);
-
-    if (actual === kind) {
-      return true;
+function AssertKindof (value, types, message) {
+  if (arguments.length >= 2) {
+    if (!is(value, types)) {
+      throw createError(value, types, message)
     }
-
-    throw new KindError({
-      filepath: filepath,
-      filename: path.basename(filepath),
-      actual: actual,
-      expected: kind,
-      message: message,
-      value: value,
-      not: false
-    });
-  };
-
-  /**
-   * Check given value against `kind` native type,
-   * then throws if okey
-   *
-   * @param  {*} `value`
-   * @param  {String} `message`
-   */
-  assertKindof.not[kind] = function(value, message) {
-    var actual = kindof(value);
-
-    if (actual !== kind) {
-      return true;
-    }
-
-    throw new KindError({
-      filepath: filepath,
-      filename: path.basename(filepath),
-      actual: actual,
-      expected: kind,
-      message: message,
-      value: value,
-      not: true
-    });
-  };
-});
-
-/**
- * Custom error
- *
- * @param {Object} `e`
- */
-function KindError(e) {
-  var eq = e.not ? '===' : '!==';
-  var tobe = e.not ? 'not to be' : 'to be';
-  var err = new TypeError();
-  var stack = err.stack;
-  var fmt = '%s:%s, expect `value` %s %s, but %s given';
-  this._stack = err.stack;
-
-  stack = stack.slice(err.stack.indexOf(e.filepath));
-  stack = stack.slice(0, stack.indexOf('\n') - 1);
-  var matches = stack.match(/(\d+):\d+$/);
-
-  this.name = 'TypeError';
-  this.line = Number(matches && matches[1]);
-  this.value = e.value;
-  this.actual = e.actual;
-  this.expected = e.expected;
-
-  this.problem = format('actual %s expected', eq);
-
-  this.filepath = e.filepath;
-  this.filename = e.filename;
-
-  if (kindof(e.message) === 'function') {
-    e.message = e.message(this);
+    return true
   }
-  this.message = e.message || format(fmt, e.filename, this.line, tobe, e.expected, e.actual);
-
-  Error.captureStackTrace(this);
+  if (!(this instanceof AssertKindof)) {
+    return new AssertKindof(value)
+  }
+  this.value = value
 }
 
-KindError.prototype = Object.create(TypeError.prototype);
-KindError.prototype.constructor = KindError;
+// is(val, types, message)
+// is(val).number()
+// is().number(val, message)
+// is.number(val, message)
+methods.forEach(function (method) {
+  AssertKindof[method] = function assertValue (value, message) {
+    var has = Object.hasOwnProperty
+    if (!arguments.length && has.call(this, 'value')) {
+      if (!is(this.value, method)) {
+        throw createError(this.value, method)
+      }
+      return true
+    }
+    if (!is(value, method)) {
+      throw createError(value, method, message)
+    }
+    return true
+  }
+})
 
-assertKindof.a = assertKindof.an = assertKindof;
-assertKindof.not.a = assertKindof.not.an = assertKindof.not;
-assertKindof.a.not = assertKindof.an.not = assertKindof.not;
-assertKindof.kindof = isKindof;
+function createError (val, method, msg) {
+  method = method[0] === 'i' && method[1] === 's' ? method.slice(2) : method
 
+  var expected = method
 
+  if (kindof(expected) === 'array') {
+    expected = expected.join(' or ')
+  }
+
+  var kindError = new KindError({
+    name: 'AssertError',
+    actual: val,
+    expected: expected,
+    showStack: true
+  })
+  var meta = metadata(kindError)
+  meta.showStack = false
+
+  return new KindError(meta)
+}
+
+function metadata (err) {
+  var stack = err.stack || ''
+  stack = stack.slice(err.stack.indexOf(filename))
+  stack = stack.slice(0, stack.indexOf('\n') - 1)
+
+  var matches = stack.match(/([^:\s]+):(\d+)(?::(\d+))$/)
+
+  err.filepath = stack
+  err.filename = matches && matches[1]
+  err.line = Number(matches && matches[2])
+  err.column = Number(matches && matches[3])
+
+  return err
+}
+
+function lastParentFilename (parent) {
+  if (parent && parent.parent) {
+    return lastParentFilename(parent.parent)
+  }
+  return parent.filename
+}
