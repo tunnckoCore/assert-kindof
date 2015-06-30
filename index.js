@@ -7,12 +7,11 @@
 
 'use strict'
 
+var extend = require('extend-shallow')
 var KindError = require('kind-error')
 var kindof = require('kind-of')
 var is = require('is-kindof')
 
-var has = Object.hasOwnProperty
-var proto = Object.getPrototypeOf
 var methods = Object.keys(is)
 var filename = lastParentFilename(module.parent)
 
@@ -60,16 +59,13 @@ function createError (val, method, msg) {
     expected = expected.join(' or ')
   }
 
-  var kindError = new KindError({
+  var meta = metadata(new TypeError())
+  return new KindError(extend(meta, {
     name: 'AssertError',
-    actual: val,
-    expected: expected,
-    showStack: true
-  })
-  var meta = metadata(kindError)
-  meta.showStack = false
-
-  return new KindError(meta)
+    value: val,
+    actual: kindof(val),
+    expected: expected
+  }))
 }
 
 function metadata (err) {

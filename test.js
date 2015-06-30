@@ -27,7 +27,7 @@ function failing (val) {
 
 function testing () {
   var data = true
-  failing(123)
+  failing(123, data)
 }
 
 try {
