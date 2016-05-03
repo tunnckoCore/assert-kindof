@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "is-kindof": "^2.0.0",
-    "kind-of": "^2.0.0",
+    "kind-of": "^3.0.3",
     "plugin-error": "^0.1.2"
   },
   "devDependencies": {
