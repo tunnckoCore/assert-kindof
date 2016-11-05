@@ -11,29 +11,6 @@ var assert = require('assert')
 var utils = require('./utils')
 
 /**
- * > Creates options object passed to AssertionError.
- *
- * @param  {String} `actual` type of the actual value
- * @param  {String} `expected` type of the expected
- * @param  {String} `operator`
- * @param  {Any} `value` actually passed value, not it's type
- * @param  {Function} `fn` stack start function
- * @return {Object} options object to be passed
- * @api private
- */
-
-function create (actual, expected, operator, value, fn) {
-  return {
-    actual: actual,
-    expected: expected,
-    operator: operator,
-    value: value,
-    message: actual + ' ' + operator + ' ' + expected,
-    stackStartFunction: fn
-  }
-}
-
-/**
  * > Testing if `ok` not truthy, throw AssertionError,
  * adds actual value to the error object and cleans the stack trace
  *
@@ -42,6 +19,7 @@ function create (actual, expected, operator, value, fn) {
  * @return {Undefined} or throws the AssertionError
  * @api private
  */
+
 function test (ok, opts) {
   if (!ok) {
     var err = new assert.AssertionError(opts)
@@ -58,23 +36,50 @@ function test (ok, opts) {
  * etc.
  *
  * @param  {String} `type` type of the given value
- * @param  {[type]} `control` is normal or `is.not.object` for example
+ * @param  {Boolean} `control` is normal or `is.not.object` for example
  * @return {Function} `fn` actual exported method to check type of some value
  * @api private
  */
 
-function check (type, control) {
-  return function assertIs (value) {
+function check (expected, control) {
+  return function assertIs (value, message) {
     var actual = utils.kindOf(value)
-    var result = utils.is[type](value)
+    var result = utils.is[expected](value)
     var operator = control === false ? '===' : '!=='
-    var options = create(actual, type, operator, value, assertIs)
 
-    test(result === control, options)
+    if (utils.kindOf(message) === 'function') {
+      message = message(actual, expected, value)
+    }
+
+    message = utils.kindOf(message) !== 'string'
+      ? actual + ' ' + operator + ' ' + expected
+      : message
+
+    test(result === control, {
+      actual: actual,
+      expected: expected,
+      operator: operator,
+      value: value,
+      message: message,
+      stackStartFunction: assertIs
+    })
   }
 }
 
+/**
+ * Expose method for each type.
+ *
+ * @type {Object}
+ */
+
 var assertKindof = module.exports
+
+/**
+ * Expose "not" modifier for negations.
+ *
+ * @type {Object}
+ */
+
 assertKindof.not = {}
 
 Object.keys(utils.is).forEach(function (type) {
