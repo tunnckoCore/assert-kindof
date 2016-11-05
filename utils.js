@@ -8,9 +8,13 @@ require = utils // eslint-disable-line no-undef, no-native-reassign, no-global-a
  * Lazily required module dependencies
  */
 
-require('core-assert')
-require('is-kindof')
+require('clean-stacktrace', 'cleanStack')
+require('is-kindof', 'is')
+require('kind-of-extra', 'kindOf')
 require = fn // eslint-disable-line no-undef, no-native-reassign, no-global-assign
+
+// need bump in kind-of-types
+delete utils.is['hybrid']
 
 /**
  * Expose `utils` modules

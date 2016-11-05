@@ -1,7 +1,7 @@
 {
   "name": "assert-kindof",
-  "version": "0.1.0",
-  "description": "wip",
+  "version": "1.0.1",
+  "description": "Check native type of value and throw AssertionError if not okey. Clean stack traces. Simplicity.",
   "repository": "tunnckoCore/assert-kindof",
   "author": "Charlike Mike Reagent <@tunnckoCore> (http://www.tunnckocore.tk)",
   "precommit.silent": true,
@@ -21,8 +21,9 @@
     "commit": "git-cz"
   },
   "dependencies": {
-    "core-assert": "^0.2.1",
+    "clean-stacktrace": "^1.0.0",
     "is-kindof": "^3.0.0",
+    "kind-of-extra": "^1.0.4",
     "lazy-cache": "^2.0.1"
   },
   "devDependencies": {
