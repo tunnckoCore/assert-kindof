@@ -110,16 +110,46 @@ Object.keys(utils.is).forEach(function (type) {
 })
 
 /**
+ * > All methods from [is-kindof][] are also exposed,
+ * so check its docs. That `.is` is object with methods
+ * with same names as in this package.
+ *
+ * **Example**
+ *
+ * ```js
+ * var assertKindof = require('assert-kindof')
+ *
+ * assertKindof.is.array(123) // => false
+ * assertKindof.is.array([11, 22, 33]) // => true
+ *
+ * assertKindof.array([11, 22, 33]) // => not throws
+ *
+ * try {
+ *   assertKindof.array(123) // => AssertionError: number !== array
+ * } catch (err) {
+ *   console.log(err.message) // => 'number !== array'
+ * }
+ * ```
+ *
+ * @name .is
+ * @type {Object}
+ * @api public
+ */
+
+assertKindof.is = utils.is
+
+/**
  * > Check `value` is array, if not throws AssertionError.
  *
  * **Example**
  *
  * ```js
- * is.array([1, 2, 3]) // => not throws
- * is.array(123) // => AssertionError: number !== array
+ * var assert = require('assert-kindof')
+ * assert.array([1, 2, 3]) // => not throws
+ * assert.array(123) // => AssertionError: number !== array
  *
  * try {
- *   is.array({ foo: 'bar' }, 'expect `val` to be {expected}')
+ *   assert.array({ foo: 'bar' }, 'expect `val` to be {expected}')
  * } catch (err) {
  *   console.log(err.message) // => 'expect `val` to be array'
  *   console.log(err.actual) // => object
@@ -142,13 +172,14 @@ Object.keys(utils.is).forEach(function (type) {
  * **Example**
  *
  * ```js
- * is.boolean(true) // => not throws
- * is.boolean(false) // => not throws
- * is.boolean(123) // => AssertionError: number !== boolean
- * is.boolean(null) // => AssertionError: null !== boolean
+ * var assert = require('assert-kindof')
+ * assert.boolean(true) // => not throws
+ * assert.boolean(false) // => not throws
+ * assert.boolean(123) // => AssertionError: number !== boolean
+ * assert.boolean(null) // => AssertionError: null !== boolean
  *
  * try {
- *   is.boolean([1, 2, 3], 'expect `val` to be {expected}')
+ *   assert.boolean([1, 2, 3], 'expect `val` to be {expected}')
  * } catch (err) {
  *   console.log(err.message) // => 'expect `val` to be boolean'
  *   console.log(err.actual) // => array
@@ -171,11 +202,12 @@ Object.keys(utils.is).forEach(function (type) {
  * **Example**
  *
  * ```js
- * is.buffer(new Buffer('foo')) // => not throws
- * is.buffer(123) // => AssertionError: number !== buffer
+ * var assert = require('assert-kindof')
+ * assert.buffer(new Buffer('foo')) // => not throws
+ * assert.buffer(123) // => AssertionError: number !== buffer
  *
  * try {
- *   is.buffer(true, 'expect `val` to be {expected}')
+ *   assert.buffer(true, 'expect `val` to be {expected}')
  * } catch (err) {
  *   console.log(err.message) // => 'expect `val` to be buffer'
  *   console.log(err.actual) // => boolean
@@ -198,11 +230,12 @@ Object.keys(utils.is).forEach(function (type) {
  * **Example**
  *
  * ```js
- * is.date(new Date()) // => not throws
- * is.date(123) // => AssertionError: number !== date
+ * var assert = require('assert-kindof')
+ * assert.date(new Date()) // => not throws
+ * assert.date(123) // => AssertionError: number !== date
  *
  * try {
- *   is.date({ a: 'b' }, 'expect `val` to be {expected}')
+ *   assert.date({ a: 'b' }, 'expect `val` to be {expected}')
  * } catch (err) {
  *   console.log(err.message) // => 'expect `val` to be date'
  *   console.log(err.actual) // => object
@@ -225,12 +258,13 @@ Object.keys(utils.is).forEach(function (type) {
  * **Example**
  *
  * ```js
- * is.error(new Error()) // => not throws
- * is.error(new TypeError()) // => not throws
- * is.error(123) // => AssertionError: number !== error
+ * var assert = require('assert-kindof')
+ * assert.error(new Error()) // => not throws
+ * assert.error(new TypeError()) // => not throws
+ * assert.error(123) // => AssertionError: number !== error
  *
  * try {
- *   is.error({ a: 'b' }, 'expect `val` to be {expected}')
+ *   assert.error({ a: 'b' }, 'expect `val` to be {expected}')
  * } catch (err) {
  *   console.log(err.message) // => 'expect `val` to be error'
  *   console.log(err.actual) // => object
@@ -253,15 +287,16 @@ Object.keys(utils.is).forEach(function (type) {
  * **Example**
  *
  * ```js
- * is.function(function noop () {}) // => not throws
- * is.function((a, b) => {}) // => not throws
- * is.function(123) // => AssertionError: number !== error
+ * var assert = require('assert-kindof')
+ * assert.function(function noop () {}) // => not throws
+ * assert.function((a, b) => {}) // => not throws
+ * assert.function(123) // => AssertionError: number !== error
  *
- * is.function(function * noop () {})
+ * assert.function(function * noop () {})
  * // => AssertionError: generatorfunction !== function
  *
  * try {
- *   is.function({ a: 'b' }, 'expect `val` to be {expected}')
+ *   assert.function({ a: 'b' }, 'expect `val` to be {expected}')
  * } catch (err) {
  *   console.log(err.message) // => 'expect `val` to be function'
  *   console.log(err.actual) // => object
@@ -288,13 +323,13 @@ Object.keys(utils.is).forEach(function (type) {
  * var genFn = function * genFn () {}
  * var noop = () => { return 123 }
  *
- * is.generator(generator) // => not throws
- * is.generator(genFn) // => AssertionError: generatorfunction !== generator
- * is.generator(noop) // => AssertionError: function !== generator
- * is.generator(123) // => AssertionError: number !== generator
+ * assert.generator(generator) // => not throws
+ * assert.generator(genFn) // => AssertionError: generatorfunction !== generator
+ * assert.generator(noop) // => AssertionError: function !== generator
+ * assert.generator(123) // => AssertionError: number !== generator
  *
  * try {
- *   is.generator({ a: 'b' }, 'expect `val` to be {expected}')
+ *   assert.generator({ a: 'b' }, 'expect `val` to be {expected}')
  * } catch (err) {
  *   console.log(err.message) // => 'expect `val` to be generator'
  *   console.log(err.actual) // => object
@@ -321,14 +356,14 @@ Object.keys(utils.is).forEach(function (type) {
  * var genFn = function * genFn () {}
  * var noop = () => { return 123 }
  *
- * is.generatorfunction(genFn) // => not throws
+ * assert.generatorfunction(genFn) // => not throws
  *
- * is.generatorfunction(generator) // => AssertionError: generator !== generatorfunction
- * is.generatorfunction(noop) // => AssertionError: function !== generatorfunction
- * is.generatorfunction(123) // => AssertionError: number !== generatorfunction
+ * assert.generatorfunction(generator) // => AssertionError: generator !== generatorfunction
+ * assert.generatorfunction(noop) // => AssertionError: function !== generatorfunction
+ * assert.generatorfunction(123) // => AssertionError: number !== generatorfunction
  *
  * try {
- *   is.generatorfunction({ a: 'b' }, 'expect `val` to be {expected}')
+ *   assert.generatorfunction({ a: 'b' }, 'expect `val` to be {expected}')
  * } catch (err) {
  *   console.log(err.message) // => 'expect `val` to be generatorfunction'
  *   console.log(err.actual) // => object
@@ -351,12 +386,13 @@ Object.keys(utils.is).forEach(function (type) {
  * **Example**
  *
  * ```js
- * is.map(new Map()) // => not throws
- * is.map(new WeakMap()) // => AssertionError: weakmap !== map
- * is.map(123) // => AssertionError: number !== map
+ * var assert = require('assert-kindof')
+ * assert.map(new Map()) // => not throws
+ * assert.map(new WeakMap()) // => AssertionError: weakmap !== map
+ * assert.map(123) // => AssertionError: number !== map
  *
  * try {
- *   is.map(123, 'expect `val` to be {expected}')
+ *   assert.map(123, 'expect `val` to be {expected}')
  * } catch (err) {
  *   console.log(err.message) // => 'expect `val` to be map'
  *   console.log(err.actual) // => number
@@ -379,12 +415,13 @@ Object.keys(utils.is).forEach(function (type) {
  * **Example**
  *
  * ```js
- * is.null(null) // => not throws
- * is.null({ a: 'b' }) // => AssertionError: object !== null
- * is.null(123) // => AssertionError: number !== null
+ * var assert = require('assert-kindof')
+ * assert.null(null) // => not throws
+ * assert.null({ a: 'b' }) // => AssertionError: object !== null
+ * assert.null(123) // => AssertionError: number !== null
  *
  * try {
- *   is.null(123, 'expect `val` to be {expected}')
+ *   assert.null(123, 'expect `val` to be {expected}')
  * } catch (err) {
  *   console.log(err.message) // => 'expect `val` to be null'
  *   console.log(err.actual) // => number
@@ -407,12 +444,13 @@ Object.keys(utils.is).forEach(function (type) {
  * **Example**
  *
  * ```js
- * is.number(123) // => not throws
- * is.number({ a: 'b' }) // => AssertionError: object !== number
- * is.number(null) // => AssertionError: null !== number
+ * var assert = require('assert-kindof')
+ * assert.number(123) // => not throws
+ * assert.number({ a: 'b' }) // => AssertionError: object !== number
+ * assert.number(null) // => AssertionError: null !== number
  *
  * try {
- *   is.number([111, 222], 'expect `val` to be {expected}')
+ *   assert.number([111, 222], 'expect `val` to be {expected}')
  * } catch (err) {
  *   console.log(err.message) // => 'expect `val` to be number'
  *   console.log(err.actual) // => array
@@ -435,12 +473,13 @@ Object.keys(utils.is).forEach(function (type) {
  * **Example**
  *
  * ```js
- * is.object({ aaa: 'bbb' }) // => not throws
- * is.object([1, 2, 3]) // => AssertionError: array !== object
- * is.object(null) // => AssertionError: null !== object
+ * var assert = require('assert-kindof')
+ * assert.object({ aaa: 'bbb' }) // => not throws
+ * assert.object([1, 2, 3]) // => AssertionError: array !== object
+ * assert.object(null) // => AssertionError: null !== object
  *
  * try {
- *   is.object([111, 222], 'expect `val` to be {expected}')
+ *   assert.object([111, 222], 'expect `val` to be {expected}')
  * } catch (err) {
  *   console.log(err.message) // => 'expect `val` to be object'
  *   console.log(err.actual) // => array
@@ -463,14 +502,15 @@ Object.keys(utils.is).forEach(function (type) {
  * **Example**
  *
  * ```js
- * is.promise(Promise.resolve(123)) // => not throws
- * is.promise(Promise.reject(new Error('foo'))) // => not throws
+ * var assert = require('assert-kindof')
+ * assert.promise(Promise.resolve(123)) // => not throws
+ * assert.promise(Promise.reject(new Error('foo'))) // => not throws
  *
- * is.promise(new Map()) // => AssertionError: map !== promise
- * is.promise(123) // => AssertionError: number !== promise
+ * assert.promise(new Map()) // => AssertionError: map !== promise
+ * assert.promise(123) // => AssertionError: number !== promise
  *
  * try {
- *   is.promise({ a: 1 }, 'expect `val` to be {expected}')
+ *   assert.promise({ a: 1 }, 'expect `val` to be {expected}')
  * } catch (err) {
  *   console.log(err.message) // => 'expect `val` to be promise'
  *   console.log(err.actual) // => object
@@ -493,14 +533,15 @@ Object.keys(utils.is).forEach(function (type) {
  * **Example**
  *
  * ```js
- * is.regexp(/foo ba?r abz/i) // => not throws
- * is.regexp(new RegExp('aa bb')) // => not throws
+ * var assert = require('assert-kindof')
+ * assert.regexp(/foo ba?r abz/i) // => not throws
+ * assert.regexp(new RegExp('aa bb')) // => not throws
  *
- * is.regexp(new Map()) // => AssertionError: map !== regexp
- * is.regexp(123) // => AssertionError: number !== regexp
+ * assert.regexp(new Map()) // => AssertionError: map !== regexp
+ * assert.regexp(123) // => AssertionError: number !== regexp
  *
  * try {
- *   is.regexp({ a: 1 }, 'expect `val` to be {expected}')
+ *   assert.regexp({ a: 1 }, 'expect `val` to be {expected}')
  * } catch (err) {
  *   console.log(err.message) // => 'expect `val` to be regexp'
  *   console.log(err.actual) // => object
@@ -523,12 +564,13 @@ Object.keys(utils.is).forEach(function (type) {
  * **Example**
  *
  * ```js
- * is.set(new Set()) // => not throws
- * is.set(new Map()) // => AssertionError: map !== set
- * is.set(123) // => AssertionError: number !== set
+ * var assert = require('assert-kindof')
+ * assert.set(new Set()) // => not throws
+ * assert.set(new Map()) // => AssertionError: map !== set
+ * assert.set(123) // => AssertionError: number !== set
  *
  * try {
- *   is.set({ a: 1 }, 'expect `val` to be {expected}')
+ *   assert.set({ a: 1 }, 'expect `val` to be {expected}')
  * } catch (err) {
  *   console.log(err.message) // => 'expect `val` to be set'
  *   console.log(err.actual) // => object
@@ -552,14 +594,14 @@ Object.keys(utils.is).forEach(function (type) {
  *
  * ```js
  * var through2 = require('through2')
- * is.stream(through2()) // => not throws
- * is.stream(through2.obj()) // => not throws
+ * assert.stream(through2()) // => not throws
+ * assert.stream(through2.obj()) // => not throws
  *
- * is.stream(new Map()) // => AssertionError: map !== stream
- * is.stream(123) // => AssertionError: number !== stream
+ * assert.stream(new Map()) // => AssertionError: map !== stream
+ * assert.stream(123) // => AssertionError: number !== stream
  *
  * try {
- *   is.stream({ a: 1 }, 'expect `val` to be {expected}')
+ *   assert.stream({ a: 1 }, 'expect `val` to be {expected}')
  * } catch (err) {
  *   console.log(err.message) // => 'expect `val` to be stream'
  *   console.log(err.actual) // => object
@@ -583,15 +625,15 @@ Object.keys(utils.is).forEach(function (type) {
  *
  * ```js
  * var fn = function aa () { return 123 }
- * is.string('foo bar baz') // => not throws
- * is.string(fn.toString()) // => not throws
- * is.string(new String('abc')) // => not throws
+ * assert.string('foo bar baz') // => not throws
+ * assert.string(fn.toString()) // => not throws
+ * assert.string(new String('abc')) // => not throws
  *
- * is.string(new Map()) // => AssertionError: map !== string
- * is.string(123) // => AssertionError: number !== string
+ * assert.string(new Map()) // => AssertionError: map !== string
+ * assert.string(123) // => AssertionError: number !== string
  *
  * try {
- *   is.string({ a: 1 }, 'expect `val` to be {expected}')
+ *   assert.string({ a: 1 }, 'expect `val` to be {expected}')
  * } catch (err) {
  *   console.log(err.message) // => 'expect `val` to be string'
  *   console.log(err.actual) // => object
@@ -612,15 +654,16 @@ Object.keys(utils.is).forEach(function (type) {
  * > Check `value` is Symbol, if not throws AssertionError.
  *
  * **Example**
- *
+
+ * var assert = require('assert-kindof')*
  * ```js
- * is.symbol(Symbol()) // => not throws
+ * assert.symbol(Symbol()) // => not throws
  *
- * is.symbol(new Map()) // => AssertionError: map !== symbol
- * is.symbol(123) // => AssertionError: number !== symbol
+ * assert.symbol(new Map()) // => AssertionError: map !== symbol
+ * assert.symbol(123) // => AssertionError: number !== symbol
  *
  * try {
- *   is.symbol({ a: 1 }, 'expect `val` to be {expected}')
+ *   assert.symbol({ a: 1 }, 'expect `val` to be {expected}')
  * } catch (err) {
  *   console.log(err.message) // => 'expect `val` to be symbol'
  *   console.log(err.actual) // => object
@@ -643,14 +686,15 @@ Object.keys(utils.is).forEach(function (type) {
  * **Example**
  *
  * ```js
- * is.undefined() // => not throws
- * is.undefined(undefined) // => not throws
+ * var assert = require('assert-kindof')
+ * assert.undefined() // => not throws
+ * assert.undefined(undefined) // => not throws
  *
- * is.undefined(new Map()) // => AssertionError: map !== undefined
- * is.undefined(123) // => AssertionError: number !== undefined
+ * assert.undefined(new Map()) // => AssertionError: map !== undefined
+ * assert.undefined(123) // => AssertionError: number !== undefined
  *
  * try {
- *   is.undefined({ a: 1 }, 'expect `val` to be {expected}')
+ *   assert.undefined({ a: 1 }, 'expect `val` to be {expected}')
  * } catch (err) {
  *   console.log(err.message) // => 'expect `val` to be undefined'
  *   console.log(err.actual) // => object
@@ -673,14 +717,15 @@ Object.keys(utils.is).forEach(function (type) {
  * **Example**
  *
  * ```js
- * is.weakmap(new WeakMap()) // => not throws
+ * var assert = require('assert-kindof')
+ * assert.weakmap(new WeakMap()) // => not throws
  *
- * is.weakmap(new WeakSet()) // => AssertionError: weakset !== weakmap
- * is.weakmap(new Map()) // => AssertionError: map !== weakmap
- * is.weakmap(123) // => AssertionError: number !== weakmap
+ * assert.weakmap(new WeakSet()) // => AssertionError: weakset !== weakmap
+ * assert.weakmap(new Map()) // => AssertionError: map !== weakmap
+ * assert.weakmap(123) // => AssertionError: number !== weakmap
  *
  * try {
- *   is.weakmap({ a: 1 }, 'expect `val` to be {expected}')
+ *   assert.weakmap({ a: 1 }, 'expect `val` to be {expected}')
  * } catch (err) {
  *   console.log(err.message) // => 'expect `val` to be weakmap'
  *   console.log(err.actual) // => object
@@ -703,14 +748,15 @@ Object.keys(utils.is).forEach(function (type) {
  * **Example**
  *
  * ```js
- * is.weakmap(new WeakSet()) // => not throws
+ * var assert = require('assert-kindof')
+ * assert.weakmap(new WeakSet()) // => not throws
  *
- * is.weakset(new WeakMap()) // => AssertionError: weakmap !== weakset
- * is.weakset(new Map()) // => AssertionError: map !== weakset
- * is.weakset(123) // => AssertionError: number !== weakset
+ * assert.weakset(new WeakMap()) // => AssertionError: weakmap !== weakset
+ * assert.weakset(new Map()) // => AssertionError: map !== weakset
+ * assert.weakset(123) // => AssertionError: number !== weakset
  *
  * try {
- *   is.weakset({ a: 1 }, 'expect `val` to be {expected}')
+ *   assert.weakset({ a: 1 }, 'expect `val` to be {expected}')
  * } catch (err) {
  *   console.log(err.message) // => 'expect `val` to be weakset'
  *   console.log(err.actual) // => object

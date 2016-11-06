@@ -11,11 +11,11 @@
 
 var util = require('util')
 var test = require('mukla')
-var is = require('./index')
+var assert = require('./index')
 
 test('should throws if not okey', function (done) {
   try {
-    is.object(null)
+    assert.object(null)
   } catch (err) {
     test.strictEqual(err.message, 'null !== object')
     test.strictEqual(err.actual, 'null')
@@ -26,7 +26,7 @@ test('should throws if not okey', function (done) {
 
 test('should throws if negation not okey', function (done) {
   try {
-    is.not.number(123)
+    assert.not.number(123)
   } catch (err) {
     test.strictEqual(err.message, 'number === number')
   }
@@ -34,14 +34,14 @@ test('should throws if negation not okey', function (done) {
 })
 
 test('should not throw if okey', function (done) {
-  is.string('foo')
+  assert.string('foo')
   done()
 })
 
 test('should allow custom assertion message', function (done) {
   var msg = 'expect a function, but got object'
   try {
-    is.function({ foo: 'barrr' }, msg)
+    assert.function({ foo: 'barrr' }, msg)
   } catch (err) {
     test.strictEqual(err.message, msg)
     test.strictEqual(err.value.foo, 'barrr')
@@ -51,7 +51,7 @@ test('should allow custom assertion message', function (done) {
 
 test('should allow msg to be function', function (done) {
   try {
-    is.number({ aa: 'bb' }, function (actual, expected, value) {
+    assert.number({ aa: 'bb' }, function (actual, expected, value) {
       test.strictEqual(actual, 'object')
       test.strictEqual(expected, 'number')
       test.strictEqual(value.aa, 'bb')
@@ -65,14 +65,23 @@ test('should allow msg to be function', function (done) {
 
 test('should support message to be template', function (done) {
   try {
-    is.function('foo', 'expect `bar` to be {expected}, but got {actual}')
+    assert.function('foo', 'expect `bar` to be {expected}, but got {actual}')
   } catch (err) {
     test.strictEqual(err.message, 'expect `bar` to be function, but got string')
     done()
   }
 })
 
-test('should `is.undefined()` not throws', function (done) {
-  is.undefined()
+test('should `assert.undefined()` not throws', function (done) {
+  assert.undefined()
+  done()
+})
+
+test('should expose `is-kindof` as `.is`', function (done) {
+  test.strictEqual(typeof assert.is, 'object')
+  test.strictEqual(typeof assert.is.string, 'function')
+  test.strictEqual(typeof assert.is.boolean, 'function')
+  test.strictEqual(assert.is.null('abc'), false)
+  test.strictEqual(assert.is.string('abc'), true)
   done()
 })
