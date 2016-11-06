@@ -41,7 +41,31 @@
     "index.js",
     "utils.js"
   ],
-  "keywords": [],
+  "keywords": [
+    "assert",
+    "assertion",
+    "check",
+    "checking",
+    "checktype",
+    "clean",
+    "cleanstack",
+    "err",
+    "error",
+    "kind",
+    "kindof",
+    "kinds",
+    "simple",
+    "simplicity",
+    "stack",
+    "stacktrace",
+    "trace",
+    "type",
+    "typecheck",
+    "typeof",
+    "types",
+    "validate",
+    "validation"
+  ],
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
