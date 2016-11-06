@@ -82,7 +82,10 @@
       "is-kindof",
       "kind-of",
       "once",
-      "try-catch-core"
+      "try-catch-core",
+      "clean-stacktrace",
+      "kind-of-extra",
+      "kind-of-types"
     ]
   }
 }

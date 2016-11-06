@@ -4,6 +4,16 @@
 
 [![code climate][codeclimate-img]][codeclimate-url] [![standard code style][standard-img]][standard-url] [![travis build status][travis-img]][travis-url] [![coverage status][coveralls-img]][coveralls-url] [![dependency status][david-img]][david-url]
 
+## Highlights
+- **simplicity:** pretty simple and stable codebase, built on [kind-of][] and [kind-of-extra][]
+- **flexibility:** expose methods for each javascript type, using [kind-of-types][]
+- **better coverage:** ensures that your code will not have many branches
+- **clean stack traces:** clean and small stack traces, using [clean-stacktrace][]
+- **type checking:** exposes [is-kindof][] methods for returning booleans
+- **negations:** support "not" modifier, e.g. `is.not.array(val)`
+- **errors:** enhanced error objects with `actual`, `expected`, `operator` and `value` props
+- **messages:** customizable and clean error messages
+
 ## Table of Contents
 - [Install](#install)
 - [Usage](#usage)
@@ -736,3 +746,6 @@ But before doing anything, please read the [CONTRIBUTING.md](./CONTRIBUTING.md) 
 [new-message-url]: https://github.com/tunnckoCore/ama
 [new-message-img]: https://img.shields.io/badge/ask%20me-anything-green.svg
 
+[clean-stacktrace]: https://github.com/tunnckocore/clean-stacktrace
+[kind-of-extra]: https://github.com/tunnckocore/kind-of-extra
+[kind-of-types]: https://github.com/tunnckocore/kind-of-types
