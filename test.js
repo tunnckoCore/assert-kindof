@@ -62,3 +62,12 @@ test('should allow msg to be function', function (done) {
   }
   done()
 })
+
+test('should support message to be template', function (done) {
+  try {
+    is.function('foo', 'expect `bar` to be {expected}, but got {actual}')
+  } catch (err) {
+    test.strictEqual(err.message, 'expect `bar` to be function, but got string')
+    done()
+  }
+})

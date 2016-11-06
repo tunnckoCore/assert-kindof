@@ -11,6 +11,7 @@ require = utils // eslint-disable-line no-undef, no-native-reassign, no-global-a
 require('clean-stacktrace', 'cleanStack')
 require('is-kindof', 'is')
 require('kind-of-extra', 'kindOf')
+require('string-template', 'format')
 require = fn // eslint-disable-line no-undef, no-native-reassign, no-global-assign
 
 // need bump in kind-of-types

@@ -51,15 +51,15 @@ function check (expected, control) {
       message = message(actual, expected, value)
     }
 
-    message = utils.kindOf(message) !== 'string'
-      ? actual + ' ' + operator + ' ' + expected
-      : message
+    message = utils.kindOf(message) === 'string'
+      ? utils.format(message, { expected: expected, actual: actual })
+      : actual + ' ' + operator + ' ' + expected
 
     test(result === control, {
+      value: value,
       actual: actual,
       expected: expected,
       operator: operator,
-      value: value,
       message: message,
       stackStartFunction: assertIs
     })
