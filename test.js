@@ -71,3 +71,8 @@ test('should support message to be template', function (done) {
     done()
   }
 })
+
+test('should `is.undefined()` not throws', function (done) {
+  is.undefined()
+  done()
+})
