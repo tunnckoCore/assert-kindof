@@ -1,3 +1,32 @@
+# Change Log
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/tunnckocore/assert-kindof/compare/v1.0.1...v2.0.0) (2016-11-06)
+
+
+### Bug Fixes
+
+* **api:** update api docs, expose is-kindof too ([bcc2eda](https://github.com/tunnckocore/assert-kindof/commit/bcc2eda))
+* **custom:** allow passing custom error message ([4e93b1f](https://github.com/tunnckocore/assert-kindof/commit/4e93b1f))
+
+
+### Code Refactoring
+
+* **index:** simplify, make it not so expressive ([958bbac](https://github.com/tunnckocore/assert-kindof/commit/958bbac))
+
+
+### BREAKING CHANGES
+
+* index: simplify, now just have methods for all of the types and methods in "not" modifier
+
+like "is.not.object(val)", "is.not.string(val)" and etc. Also has "is.string(val)" and such methods
+
+exported
+
+
+
 
 ## 1.0.1 - 2015-04-18
 - Release v1.0.1 / npm@v1.0.1
