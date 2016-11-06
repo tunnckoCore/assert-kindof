@@ -4,6 +4,35 @@
 
 [![code climate][codeclimate-img]][codeclimate-url] [![standard code style][standard-img]][standard-url] [![travis build status][travis-img]][travis-url] [![coverage status][coveralls-img]][coveralls-url] [![dependency status][david-img]][david-url]
 
+## Table of Contents
+- [Install](#install)
+- [Usage](#usage)
+- [API](#api)
+  * [.is](#is)
+  * [.array](#array)
+  * [.boolean](#boolean)
+  * [.buffer](#buffer)
+  * [.date](#date)
+  * [.error](#error)
+  * [.function](#function)
+  * [.generator](#generator)
+  * [.generatorfunction](#generatorfunction)
+  * [.map](#map)
+  * [.null](#null)
+  * [.number](#number)
+  * [.object](#object)
+  * [.promise](#promise)
+  * [.regexp](#regexp)
+  * [.set](#set)
+  * [.stream](#stream)
+  * [.string](#string)
+  * [.symbol](#symbol)
+  * [.undefined](#undefined)
+  * [.weakmap](#weakmap)
+  * [.weakset](#weakset)
+- [Related](#related)
+- [Contributing](#contributing)
+
 ## Install
 > Install with [npm](https://www.npmjs.com/)
 
@@ -15,7 +44,7 @@ $ npm i assert-kindof --save
 > For more use-cases see the [tests](./test.js)
 
 ```js
-const is = require('assert-kindof')
+const assertKindof = require('assert-kindof')
 ```
 
 ## API
@@ -634,6 +663,18 @@ try {
 }
 ```
 
+## Related
+- [always-done](https://www.npmjs.com/package/always-done): Handle completion and errors with elegance! Support for streams, callbacks, promises, child processes, async/await and sync functions. A drop-in replacement for [async-done][] - pass 100% of its… [more](https://github.com/hybridables/always-done#readme) | [homepage](https://github.com/hybridables/always-done#readme "Handle completion and errors with elegance! Support for streams, callbacks, promises, child processes, async/await and sync functions. A drop-in replacement for [async-done][] - pass 100% of its tests plus more")
+- [assertit](https://www.npmjs.com/package/assertit): Thin sugar layer on top of `testit` framework, `is-kindof` and `assert`. | [homepage](https://github.com/tunnckoCore/assertit "Thin sugar layer on top of `testit` framework, `is-kindof` and `assert`.")
+- [is-kindof](https://www.npmjs.com/package/is-kindof): Check type of given javascript value. Support promises, generators, streams, and native types. Built on [kind-of][] lib. | [homepage](https://github.com/tunnckocore/is-kindof#readme "Check type of given javascript value. Support promises, generators, streams, and native types. Built on [kind-of][] lib.")
+- [kind-of-extra](https://www.npmjs.com/package/kind-of-extra): Additional functionality to [kind-of][] type check utility. Support promises, generators, streams, errors. | [homepage](https://github.com/tunnckocore/kind-of-extra#readme "Additional functionality to [kind-of][] type check utility. Support promises, generators, streams, errors.")
+- [kind-of-types](https://www.npmjs.com/package/kind-of-types): List of all javascript types. Used and useful for checking, validation, sanitizing and testing. Like isStream, isPromise, isWeakset and etc. | [homepage](https://github.com/tunnckocore/kind-of-types#readme "List of all javascript types. Used and useful for checking, validation, sanitizing and testing. Like isStream, isPromise, isWeakset and etc.")
+- [kind-of](https://www.npmjs.com/package/kind-of): Get the native type of a value. | [homepage](https://github.com/jonschlinkert/kind-of "Get the native type of a value.")
+- [mukla](https://www.npmjs.com/package/mukla): Small, parallel and fast test framework with suppport for async/await, promises, callbacks, streams and observables. Targets and works at node.js v0.10 and above. | [homepage](https://github.com/tunnckocore/mukla#readme "Small, parallel and fast test framework with suppport for async/await, promises, callbacks, streams and observables. Targets and works at node.js v0.10 and above.")
+- [try-catch-callback](https://www.npmjs.com/package/try-catch-callback): try/catch block with a callback, used in [try-catch-core][]. Use it when you don't care about asyncness so much and don't want guarantees. If you care use [try-catch-core][]. | [homepage](https://github.com/hybridables/try-catch-callback#readme "try/catch block with a callback, used in [try-catch-core][]. Use it when you don't care about asyncness so much and don't want guarantees. If you care use [try-catch-core][].")
+- [try-catch-core](https://www.npmjs.com/package/try-catch-core): Low-level package to handle completion and errors of sync or asynchronous functions, using [once][] and [dezalgo][] libs. Useful for and used in higher-level libs such as [always-done… [more](https://github.com/hybridables/try-catch-core#readme) | [homepage](https://github.com/hybridables/try-catch-core#readme "Low-level package to handle completion and errors of sync or asynchronous functions, using [once][] and [dezalgo][] libs. Useful for and used in higher-level libs such as [always-done][] to handle completion of anything.")
+- [try-read-json](https://www.npmjs.com/package/try-read-json): Graceful reading of JSON value, using JSON.parse with support for optional callback | [homepage](https://github.com/tunnckocore/try-read-json#readme "Graceful reading of JSON value, using JSON.parse with support for optional callback")
+
 ## Contributing
 Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/tunnckoCore/assert-kindof/issues/new).  
 But before doing anything, please read the [CONTRIBUTING.md](./CONTRIBUTING.md) guidelines.
@@ -641,6 +682,14 @@ But before doing anything, please read the [CONTRIBUTING.md](./CONTRIBUTING.md) 
 ## [Charlike Make Reagent](http://j.mp/1stW47C) [![new message to charlike][new-message-img]][new-message-url] [![freenode #charlike][freenode-img]][freenode-url]
 
 [![tunnckoCore.tk][author-www-img]][author-www-url] [![keybase tunnckoCore][keybase-img]][keybase-url] [![tunnckoCore npm][author-npm-img]][author-npm-url] [![tunnckoCore twitter][author-twitter-img]][author-twitter-url] [![tunnckoCore github][author-github-img]][author-github-url]
+
+[always-done]: https://github.com/hybridables/always-done
+[async-done]: https://github.com/gulpjs/async-done
+[dezalgo]: https://github.com/npm/dezalgo
+[is-kindof]: https://github.com/tunnckocore/is-kindof
+[kind-of]: https://github.com/jonschlinkert/kind-of
+[once]: https://github.com/isaacs/once
+[try-catch-core]: https://github.com/hybridables/try-catch-core
 
 [npmjs-url]: https://www.npmjs.com/package/assert-kindof
 [npmjs-img]: https://img.shields.io/npm/v/assert-kindof.svg?label=assert-kindof
@@ -687,4 +736,3 @@ But before doing anything, please read the [CONTRIBUTING.md](./CONTRIBUTING.md) 
 [new-message-url]: https://github.com/tunnckoCore/ama
 [new-message-img]: https://img.shields.io/badge/ask%20me-anything-green.svg
 
-[is-kindof]: https://github.com/tunnckocore/is-kindof

@@ -49,13 +49,40 @@
   },
   "verb": {
     "run": true,
-    "toc": true,
+    "toc": {
+      "render": true,
+      "method": "preWrite",
+      "maxdepth": 3
+    },
     "layout": "empty",
     "tasks": [
       "readme"
     ],
+    "related": {
+      "list": [
+        "assertit",
+        "mukla",
+        "always-done",
+        "try-catch-core",
+        "try-read-json",
+        "try-catch-callback",
+        "is-kindof",
+        "kind-of-types",
+        "kind-of-extra",
+        "kind-of"
+      ]
+    },
     "lint": {
       "reflinks": true
-    }
+    },
+    "reflinks": [
+      "always-done",
+      "async-done",
+      "dezalgo",
+      "is-kindof",
+      "kind-of",
+      "once",
+      "try-catch-core"
+    ]
   }
 }
