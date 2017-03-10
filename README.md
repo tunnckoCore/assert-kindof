@@ -743,7 +743,7 @@ $ npm install && npm test
 + [codementor/tunnckoCore](https://codementor.io/tunnckoCore)
 
 ## License
-Copyright © 2016-2017, [Charlike Mike Reagent](http://www.tunnckocore.tk). Released under the [MIT License](LICENSE).
+Copyright © 2015, 2017, [Charlike Mike Reagent](http://www.tunnckocore.tk). Released under the [MIT License](LICENSE).
 
 ***
 
@@ -752,14 +752,19 @@ _Project scaffolded using [charlike][] cli._
 
 [always-done]: https://github.com/hybridables/always-done
 [async-done]: https://github.com/gulpjs/async-done
+[charlike]: https://github.com/tunnckocore/charlike
 [clean-stacktrace]: https://github.com/tunnckocore/clean-stacktrace
+[commitizen]: https://github.com/commitizen/cz-cli
 [dezalgo]: https://github.com/npm/dezalgo
 [is-kindof]: https://github.com/tunnckocore/is-kindof
 [kind-of-extra]: https://github.com/tunnckocore/kind-of-extra
 [kind-of-types]: https://github.com/tunnckocore/kind-of-types
 [kind-of]: https://github.com/jonschlinkert/kind-of
 [once]: https://github.com/isaacs/once
+[standard-version]: https://github.com/conventional-changelog/standard-version
 [try-catch-core]: https://github.com/hybridables/try-catch-core
+[verb-generate-readme]: https://github.com/verbose/verb-generate-readme
+[verb]: https://github.com/verbose/verb
 
 [license-url]: https://www.npmjs.com/package/assert-kindof
 [license-img]: https://img.shields.io/npm/l/assert-kindof.svg
@@ -788,8 +793,3 @@ _Project scaffolded using [charlike][] cli._
 [paypalme-url]: https://www.paypal.me/tunnckoCore
 [paypalme-img]: https://img.shields.io/badge/paypal-donate-brightgreen.svg
 
-[charlike]: https://github.com/tunnckocore/charlike
-[commitizen]: https://github.com/commitizen/cz-cli
-[standard-version]: https://github.com/conventional-changelog/standard-version
-[verb-generate-readme]: https://github.com/verbose/verb-generate-readme
-[verb]: https://github.com/verbose/verb
