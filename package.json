@@ -21,7 +21,7 @@
     "commit": "git-cz"
   },
   "dependencies": {
-    "clean-stacktrace": "^1.0.0",
+    "clean-stacktrace": "^1.1.0",
     "is-kindof": "^3.0.0",
     "kind-of-extra": "^1.0.4",
     "lazy-cache": "^2.0.1",
