@@ -1,6 +1,6 @@
 {
   "name": "assert-kindof",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Check native type of value and throw AssertionError if not okey. Clean stack traces. Simplicity. Built on [is-kindof][].",
   "repository": "tunnckoCore/assert-kindof",
   "author": "Charlike Mike Reagent <@tunnckoCore> (http://www.tunnckocore.tk)",

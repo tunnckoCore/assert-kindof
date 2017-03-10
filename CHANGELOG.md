@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/tunnckocore/assert-kindof/compare/v2.0.0...v2.0.1) (2017-03-10)
+
+
+### Bug Fixes
+
+* **package:** update deps ([c2c806d](https://github.com/tunnckocore/assert-kindof/commit/c2c806d))
+* **package:** update deps to test on node 0.10 and npm scripts ([ac54d55](https://github.com/tunnckocore/assert-kindof/commit/ac54d55))
+* **readme:** update start license year to 2015 ([8d7947d](https://github.com/tunnckocore/assert-kindof/commit/8d7947d))
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/tunnckocore/assert-kindof/compare/v1.0.1...v2.0.0) (2016-11-06)
 
