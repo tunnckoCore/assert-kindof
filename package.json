@@ -94,7 +94,8 @@
         "kind-of-types",
         "kind-of-extra",
         "kind-of"
-      ]
+      ],
+      "highlight": "kind-of-extra"
     },
     "lint": {
       "reflinks": true
@@ -102,14 +103,19 @@
     "reflinks": [
       "always-done",
       "async-done",
+      "clean-stacktrace",
       "dezalgo",
       "is-kindof",
       "kind-of",
+      "kind-of-extra",
+      "kind-of-types",
       "once",
       "try-catch-core",
-      "clean-stacktrace",
-      "kind-of-extra",
-      "kind-of-types"
+      "charlike",
+      "commitizen",
+      "standard-version",
+      "verb",
+      "verb-generate-readme"
     ]
   }
 }
